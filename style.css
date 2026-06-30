@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+
+/*
+s@import url('https://fonts.cdnfonts.com/css/ice-rubik-black');
+@import url('https://fonts.cdnfonts.com/css/p\oopins');
+*/
+.banner{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+.banner .slider{
+    position: absolute;
+    width: 200px; 
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px); 
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+@keyframes autoRun{
+    from{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);    
+    } to {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+}   
+
+.banner .slider .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(30vw);
+}
+.banner .slider .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner .content{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 100vw);
+    height: max-content;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner .content h1{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 11em;
+    line-height: 2%;
+    letter-spacing: -0.04em;
+    color: #252838;
+    position: relative;
+}
+.banner .content h1::after{
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 1;
+    -webkit-text-stroke: 4px #d2d2d2;
+    color: transparent;
+
+}
+.banner .content .author{
+    text-align: right;
+    max-height: 200px;
+}
+
+.banner .content h2{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 3em;
+    letter-spacing: 0.05em;
+}
+
+.banner .content .models{
+    background-image: url(models.png);
+    width: 100%;
+    height: 75vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: auto 130%;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
